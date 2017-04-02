@@ -2,13 +2,12 @@
 
 namespace Nyholm\EffectiveInterest;
 
-
 use PHPUnit\Framework\TestCase;
 
 class NewtonRaphsonTest extends TestCase
 {
     /**
-     * From https://brownmath.com/bsci/loan.htm#Sample6
+     * From https://brownmath.com/bsci/loan.htm#Sample6.
      */
     public function testGetEffectiveInterest()
     {
