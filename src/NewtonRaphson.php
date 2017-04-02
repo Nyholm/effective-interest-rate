@@ -27,7 +27,7 @@ class NewtonRaphson
     /**
      * Get the effective interest when the monthly payments are exactly the same.
      *
-     * @param int   $a The total loan amount
+     * @param int   $a The total loan amount (Principal)
      * @param int   $p The monthly payment
      * @param int   $n The number of months
      * @param float $i A guess of what the interest might be. Interest as a number between zero and one. Example 0.045

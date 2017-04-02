@@ -14,6 +14,6 @@ class NewtonRaphsonTest extends TestCase
     {
         $newton = new NewtonRaphson();
         $interest = $newton->getEffectiveInterest(11200, 291, 48, 0.12);
-        $this->assertEquals(0.1128, $interest, '', 5);
+        $this->assertEquals(0.1128, $interest, '', 0.0001);
     }
 }
