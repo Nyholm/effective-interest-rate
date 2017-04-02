@@ -1,5 +1,5 @@
 {
-    "name": "nyholm/effective-interest",
+    "name": "nyholm/effective-interest-rate",
     "type": "library",
     "description": "A library to calculate effective interest rate. Also know as XIRR or effective APR. ",
     "keywords": ["effective interest rate", "effective interest", "XIRR", "effective APR"],
