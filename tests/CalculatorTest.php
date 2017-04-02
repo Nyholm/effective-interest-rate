@@ -9,20 +9,20 @@ class CalculatorTest extends TestCase
     /**
      * @dataProvider generator
      */
-    public function testWithSpecifiedPayments(float $correctValue, int $principal, string $startDate, $func, float $guess)
+    public function testWithSpecifiedPayments(float $correctValue, int $principal, string $startDate, array $payments, float $guess)
     {
         $calculator = new Calculator();
-        $interest = $calculator->withSpecifiedPayments($principal, $startDate, $this->$func(), $guess);
+        $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
         $this->assertEquals($correctValue, $interest, 'Failed to calculate effective interest with specified payments.', 0.00001);
     }
 
     public function generator()
     {
         return [
-            [0.0233, 336000, '2017-01-30', 'payments0', 0.02],
-            [0.0805, 171920, '2017-01-30', 'payments1', 0.07],
-            [0.1045, 52800, '2017-01-30', 'payments2', 0.09],
-            [0.0549, 115000, '2017-01-30', 'payments3', 0.04],
+            [0.0233, 336000, '2017-01-30', $this->payments0(), 0.02],
+            [0.0805, 171920, '2017-01-30', $this->payments1(), 0.07],
+            [0.1045, 52800, '2017-01-30', $this->payments2(), 0.09],
+            [0.0549, 115000, '2017-01-30', $this->payments3(), 0.04],
         ];
     }
 
