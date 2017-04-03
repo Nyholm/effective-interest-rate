@@ -82,9 +82,9 @@ class Calculator
     /**
      * Prepare payment data by separating dates from values and prefix the array with the principal.
      *
-     * @param int $principal
+     * @param int    $principal
      * @param string $startDate
-     * @param array $payments
+     * @param array  $payments
      *
      * @return array
      */
