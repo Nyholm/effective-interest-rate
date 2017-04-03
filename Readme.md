@@ -65,8 +65,10 @@ $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments
 
 echo $interest; // 0.084870
 ```
- 
-## Math
+
+Correct answer is 8.49%
+
+## The mathematics
 
 We are using the same formula that Excel's XIRR function is using. We are also using NewtonRaphsons method to numerically
 find the interest we are looking for. 
