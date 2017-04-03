@@ -17,7 +17,7 @@ final class NewtonRaphson
     private $precision;
 
     /**
-     * @param int $precision
+     * @param int $precision The number of decimals to care to calculate.
      */
     public function __construct(int $precision = 7)
     {
