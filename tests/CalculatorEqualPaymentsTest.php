@@ -24,5 +24,4 @@ class CalculatorEqualPaymentsTest extends TestCase
             [0.0712, 100000, 2400, 48, 0.03],
         ];
     }
-
 }

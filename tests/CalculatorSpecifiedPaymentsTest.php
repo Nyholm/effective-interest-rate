@@ -7,10 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class CalculatorSpecifiedPaymentsTest extends TestCase
 {
-
     public function testReadmeExample()
     {
-
         $principal = 100000;
         $payment = 2400;
         $guess = 0.03;
@@ -81,7 +79,6 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     }
 
     /**
-     *
      * @return array
      */
     private function payments0(): array
@@ -124,8 +121,9 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
             '19-12-31' => 4012,
             '20-01-31' => 214012,
         ];
-    }/**
-     *
+    }
+
+    /**
      * @return array
      */
     private function payments1(): array
@@ -192,8 +190,9 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
             '21-12-31' => 3455,
             '22-01-31' => 3455,
         ];
-    }/**
-     *
+    }
+
+    /**
      * @return array
      */
     private function payments2(): array
@@ -236,8 +235,9 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
             '19-12-31' => 1684,
             '20-01-31' => 1684,
         ];
-    }/**
-     *
+    }
+
+    /**
      * @return array
      */
     private function payments3(): array

@@ -27,7 +27,7 @@ class NewtonRaphson
     /**
      * @param callable $fx
      * @param callable $fdx
-     * @param float $guess
+     * @param float    $guess
      *
      * @return float
      */
