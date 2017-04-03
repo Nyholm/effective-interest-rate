@@ -8,7 +8,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/nyholm/effective-interest-rate.svg?style=flat-square)](https://packagist.org/packages/nyholm/effective-interest-rate)
 
 This is a library that calculates the effective interest rate. The effective interest could also be called XIRR or
-effective APR.
+effective APR. This is the **PHP** library. You will find a JavaScript version of this library 
+[here](https://github.com/Nyholm/effective-interest-rate-js).
 
 ## Examples
 
