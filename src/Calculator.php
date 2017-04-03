@@ -8,6 +8,21 @@ namespace Nyholm\EffectiveInterest;
 class Calculator
 {
     /**
+     * @var NewtonRaphson
+     */
+    private $newton;
+
+    /**
+     *
+     * @param NewtonRaphson $newton
+     */
+    public function __construct(NewtonRaphson $newton = null)
+    {
+        $this->newton = $newton ?? new NewtonRaphson();
+    }
+
+
+    /**
      * Get the interest when you know all the payments and their dates. Use this function when you have
      * administration fees at the first payment and/or when payments are irregular.
      *
@@ -23,8 +38,26 @@ class Calculator
         return 0.045;
     }
 
-    public function withEqualPayments()
+    /**
+     * Get the effective interest when the monthly payments are exactly the same.
+     *
+     * @param int   $a The total loan amount (Principal)
+     * @param int   $p The monthly payment
+     * @param int   $n The number of months
+     * @param float $i A guess of what the interest might be. Interest as a number between zero and one. Example 0.045
+     *
+     * @return float
+     */
+    public function withEqualPayments(int $a, int $p, int $n, float $i): float
     {
-        // TODO implement NewtonRaphson call.
+        $fx = function ($i) use ($a, $p, $n) {
+            return  $p - $p * pow(1 + $i, -1 * $n) - $i * $a;
+        };
+
+        $fdx = function ($i) use ($a, $p, $n) {
+            return  $n * $p * pow(1 + $i, -1 * $n - 1) - $a;
+        };
+
+        return $this->newton->run($fx, $fdx, $i);
     }
 }

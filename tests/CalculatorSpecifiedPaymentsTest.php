@@ -4,7 +4,7 @@ namespace Nyholm\EffectiveInterest;
 
 use PHPUnit\Framework\TestCase;
 
-class CalculatorTest extends TestCase
+class CalculatorSpecifiedPaymentsTest extends TestCase
 {
     /**
      * @dataProvider generator

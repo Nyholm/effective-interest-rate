@@ -25,31 +25,21 @@ class NewtonRaphson
     }
 
     /**
-     * Get the effective interest when the monthly payments are exactly the same.
-     *
-     * @param int   $a The total loan amount (Principal)
-     * @param int   $p The monthly payment
-     * @param int   $n The number of months
-     * @param float $i A guess of what the interest might be. Interest as a number between zero and one. Example 0.045
+     * @param callable $fx
+     * @param callable $fdx
+     * @param float $guess
      *
      * @return float
      */
-    public function getEffectiveInterest(int $a, int $p, int $n, float $i): float
+    public function run(callable $fx, callable $fdx, float $guess): float
     {
-        $newValue = $i;
+        $newValue = $guess;
+        $errorLimit = pow(10, -1 * $this->precision);
         do {
             $previousValue = $newValue;
-            $newValue = $this->doCalculate($a, $p, $n, $previousValue);
-        } while (round($previousValue, $this->precision) !== round($newValue, $this->precision));
+            $newValue = $previousValue - ($fx($previousValue) / $fdx($previousValue));
+        } while (abs($newValue - $previousValue) > $errorLimit);
 
         return $newValue * 12;
-    }
-
-    private function doCalculate(int $a, int $p, int $n, float $i): float
-    {
-        $f = $p - $p * pow(1 + $i, -1 * $n) - $i * $a;
-        $fPrim = $n * $p * pow(1 + $i, -1 * $n - 1) - $a;
-
-        return $i - ($f / $fPrim);
     }
 }
