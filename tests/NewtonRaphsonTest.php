@@ -1,7 +1,8 @@
 <?php
 
-namespace Nyholm\EffectiveInterest;
+namespace Nyholm\EffectiveInterest\Test;
 
+use Nyholm\EffectiveInterest\NewtonRaphson;
 use PHPUnit\Framework\TestCase;
 
 class NewtonRaphsonTest extends TestCase

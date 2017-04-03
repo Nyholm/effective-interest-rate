@@ -1,11 +1,65 @@
 <?php
 
-namespace Nyholm\EffectiveInterest;
+namespace Nyholm\EffectiveInterest\Test;
 
+use Nyholm\EffectiveInterest\Calculator;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorSpecifiedPaymentsTest extends TestCase
 {
+
+    public function testReadmeExample()
+    {
+
+        $principal = 100000;
+        $payment = 2400;
+        $guess = 0.03;
+        $startDate = '2017-04-30';
+        $calculator = new Calculator();
+
+        $payments = [
+            '2017-04-30' => $payment + 400,
+            '2017-05-31' => $payment,
+            '2017-06-30' => $payment,
+            '2017-07-31' => $payment,
+            '2017-08-31' => $payment,
+            '2017-09-30' => $payment,
+            '2017-10-31' => $payment,
+            '2017-11-30' => $payment,
+            '2017-12-31' => $payment,
+            '2018-01-31' => $payment,
+            '2018-02-28' => $payment,
+            '2018-03-31' => $payment,
+            '2018-04-30' => $payment,
+            '2018-05-31' => $payment,
+            '2018-06-30' => $payment,
+            '2018-07-31' => $payment,
+            '2018-08-31' => $payment,
+            '2018-09-30' => $payment,
+            '2018-10-31' => $payment,
+            '2018-11-30' => $payment,
+            '2018-12-31' => $payment,
+            '2019-01-31' => $payment,
+            '2019-02-28' => $payment,
+            '2019-03-31' => $payment,
+            '2019-04-30' => $payment,
+            '2019-05-31' => $payment,
+            '2019-06-30' => $payment,
+            '2019-07-31' => $payment,
+            '2019-08-31' => $payment,
+            '2019-09-30' => $payment,
+            '2019-10-31' => $payment,
+            '2019-11-30' => $payment,
+            '2019-12-31' => $payment,
+            '2020-01-31' => $payment,
+            '2020-02-28' => $payment,
+            '2020-03-31' => 31200,
+        ];
+
+        $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
+        $this->assertEquals(0.084870, $interest, 'Failed to calculate effective interest with specified payments.', 0.0001);
+    }
+
     /**
      * @dataProvider generator
      */
