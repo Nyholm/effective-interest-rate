@@ -5,7 +5,7 @@ namespace Nyholm\EffectiveInterest;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Calculator
+final class Calculator
 {
     /**
      * @var NewtonRaphson
@@ -59,24 +59,24 @@ class Calculator
     /**
      * Get the effective interest when the monthly payments are exactly the same.
      *
-     * @param int   $a The total loan amount (Principal)
-     * @param int   $p The monthly payment
-     * @param int   $n The number of months
-     * @param float $i A guess of what the interest might be. Interest as a number between zero and one. Example 0.045
+     * @param int   $principal      The total loan amount (Principal)
+     * @param int   $payment        The monthly payment
+     * @param int   $numberOfMonths The number of months
+     * @param float $guess          A guess of what the interest might be. Interest as a number between zero and one. Example 0.045
      *
      * @return float
      */
-    public function withEqualPayments(int $a, int $p, int $n, float $i): float
+    public function withEqualPayments(int $principal, int $payment, int $numberOfMonths, float $guess): float
     {
-        $fx = function ($i) use ($a, $p, $n) {
-            return  $p - $p * pow(1 + $i, -1 * $n) - $i * $a;
+        $fx = function ($x) use ($principal, $payment, $numberOfMonths) {
+            return  $payment - $payment * pow(1 + $x, -1 * $numberOfMonths) - $x * $principal;
         };
 
-        $fdx = function ($i) use ($a, $p, $n) {
-            return  $n * $p * pow(1 + $i, -1 * $n - 1) - $a;
+        $fdx = function ($x) use ($principal, $payment, $numberOfMonths) {
+            return  $numberOfMonths * $payment * pow(1 + $x, -1 * $numberOfMonths - 1) - $principal;
         };
 
-        return 12 * $this->newton->run($fx, $fdx, $i);
+        return 12 * $this->newton->run($fx, $fdx, $guess);
     }
 
     /**
