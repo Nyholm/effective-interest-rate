@@ -24,7 +24,7 @@ class NewtonRaphsonTest extends TestCase
         };
 
         $newton = new NewtonRaphson();
-        $interest = $newton->run($fx, $fdx, 0.12);
+        $interest = 12 * $newton->run($fx, $fdx, 0.12);
         $this->assertEquals(0.1128, $interest, '', 0.0001);
     }
 }

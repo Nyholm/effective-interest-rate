@@ -58,6 +58,6 @@ class Calculator
             return  $n * $p * pow(1 + $i, -1 * $n - 1) - $a;
         };
 
-        return $this->newton->run($fx, $fdx, $i);
+        return 12 * $this->newton->run($fx, $fdx, $i);
     }
 }
