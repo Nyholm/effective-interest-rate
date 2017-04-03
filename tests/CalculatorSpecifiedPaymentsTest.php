@@ -13,7 +13,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
     {
         $calculator = new Calculator();
         $interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
-        $this->assertEquals($correctValue, $interest, 'Failed to calculate effective interest with specified payments.', 0.00001);
+        $this->assertEquals($correctValue, $interest, 'Failed to calculate effective interest with specified payments.', 0.0001);
     }
 
     public function generator()

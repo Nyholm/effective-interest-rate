@@ -13,14 +13,12 @@ class Calculator
     private $newton;
 
     /**
-     *
      * @param NewtonRaphson $newton
      */
     public function __construct(NewtonRaphson $newton = null)
     {
         $this->newton = $newton ?? new NewtonRaphson();
     }
-
 
     /**
      * Get the interest when you know all the payments and their dates. Use this function when you have
@@ -35,7 +33,34 @@ class Calculator
      */
     public function withSpecifiedPayments(int $principal, string $startDate, array $payments, float $guess): float
     {
-        return 0.045;
+        $values = [-1 * $principal];
+        $dates = [1];
+        $startDate = new \DateTimeImmutable($startDate);
+
+        foreach ($payments as $date => $payment) {
+            $values[] = $payment;
+            $dates[] = 1 + $startDate->diff(new \DateTime($date))->days;
+        }
+
+        $fx = function ($x) use ($dates, $values) {
+            $sum = 0;
+            foreach ($dates as $idx => $date) {
+                $sum += $values[$idx] * pow(1 + $x, ($dates[0] - $date) / 365);
+            }
+
+            return $sum;
+        };
+
+        $fdx = function ($x) use ($dates, $values) {
+            $sum = 0;
+            foreach ($dates as $idx => $date) {
+                $sum += (1 / 365) * ($dates[0] - $date) * $values[$idx] * pow(1 + $x, (($dates[0] - $date) / 365.0) - 1.0);
+            }
+
+            return $sum;
+        };
+
+        return $this->newton->run($fx, $fdx, $guess);
     }
 
     /**
