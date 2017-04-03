@@ -33,13 +33,12 @@ class NewtonRaphson
      */
     public function run(callable $fx, callable $fdx, float $guess): float
     {
-        $newValue = $guess;
         $errorLimit = pow(10, -1 * $this->precision);
         do {
-            $previousValue = $newValue;
-            $newValue = $previousValue - ($fx($previousValue) / $fdx($previousValue));
-        } while (abs($newValue - $previousValue) > $errorLimit);
+            $previousValue = $guess;
+            $guess = $previousValue - ($fx($guess) / $fdx($guess));
+        } while (abs($guess - $previousValue) > $errorLimit);
 
-        return $newValue * 12;
+        return $guess;
     }
 }
