@@ -75,6 +75,7 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
             [0.0805, 171920, '2017-01-30', $this->payments1(), 0.07],
             [0.1045, 52800, '2017-01-30', $this->payments2(), 0.09],
             [0.0549, 115000, '2017-01-30', $this->payments3(), 0.04],
+            [0.0966, 140000, '2017-01-30', $this->payments4(), 0.04],
         ];
     }
 
@@ -315,6 +316,18 @@ class CalculatorSpecifiedPaymentsTest extends TestCase
             '22-11-30' => 1862,
             '22-12-31' => 1862,
             '23-01-31' => 1862,
+        ];
+    }
+    /**
+     * @return array
+     */
+    private function payments4(): array
+    {
+        return [
+            '2017-02-28' => 2457,
+            '2017-10-11' => 51000,
+            '2018-01-10' => 40000,
+            '2019-02-10' => 64000,
         ];
     }
 }

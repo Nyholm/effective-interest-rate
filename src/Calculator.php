@@ -48,8 +48,8 @@ final class Calculator
 
         $fdx = function ($x) use ($days, $values) {
             $sum = 0;
-            foreach ($days as $idx => $date) {
-                $sum += (1 / 365) * ($days[0] - $date) * $values[$idx] * pow(1 + $x, (($days[0] - $date) / 365) - 1);
+            foreach ($days as $idx => $day) {
+                $sum += (1 / 365) * ($days[0] - $day) * $values[$idx] * pow(1 + $x, (($days[0] - $day) / 365) - 1);
             }
 
             return $sum;
