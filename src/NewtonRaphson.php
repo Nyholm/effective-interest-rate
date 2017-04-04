@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nyholm\EffectiveInterest;
 
 /**
@@ -17,7 +19,7 @@ final class NewtonRaphson
     private $precision;
 
     /**
-     * @param int $precision The number of decimals to care to calculate.
+     * @param int $precision The number of decimals to care to calculate
      */
     public function __construct(int $precision = 7)
     {

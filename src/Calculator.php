@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nyholm\EffectiveInterest;
 
 /**
@@ -91,14 +93,14 @@ final class Calculator
     private function preparePayments(int $principal, string $startDate, array $payments): array
     {
         $values = [-1 * $principal];
-        $dates = [1];
+        $days = [1];
         $startDate = new \DateTimeImmutable($startDate);
 
         foreach ($payments as $date => $payment) {
             $values[] = $payment;
-            $dates[] = 1 + $startDate->diff(new \DateTime($date))->days;
+            $days[] = 1 + $startDate->diff(new \DateTime($date))->days;
         }
 
-        return [$values, $dates];
+        return [$values, $days];
     }
 }
