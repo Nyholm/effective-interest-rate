@@ -9,7 +9,6 @@ branches:
     - /^patch-.*$/
 
 php:
-    - 7.0
     - 7.1
 env:
   global:
@@ -18,7 +17,7 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
+    - php: 7.1
       env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true TEST_COMMAND="composer test-ci"
 
 install:

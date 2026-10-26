@@ -15,9 +15,9 @@ final class Calculator
     private $newton;
 
     /**
-     * @param NewtonRaphson $newton
+     * @param NewtonRaphson|null $newton
      */
-    public function __construct(NewtonRaphson $newton = null)
+    public function __construct(?NewtonRaphson $newton = null)
     {
         $this->newton = $newton ?? new NewtonRaphson();
     }
